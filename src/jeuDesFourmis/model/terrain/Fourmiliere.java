@@ -42,7 +42,13 @@ public class Fourmiliere {
   public Fourmiliere(int l, int h) {
     largeur = l;
     hauteur = h;
-	
+	this.clear(); 
+  }
+  /*
+   * ajout fait
+   * clear crée le tableau par défaut
+   */
+  public void clear() {
     this.lesFourmis = new LinkedList<Fourmi>(); 
 	
     fourmis = new boolean[hauteur+2][largeur+2];
@@ -60,7 +66,7 @@ public class Fourmiliere {
       for (int j =0 ; j < largeur+2; j++)
 	qteGraines [i][j]=0 ; 
   }
-    
+  
   /**
    * Retourne la largeur de la fourmiliere
    * @return 			la hauteur
@@ -68,7 +74,35 @@ public class Fourmiliere {
   public int getLargeur() {
     return largeur; 
   }
-     
+  /*
+   * ajout fait
+   * permet de changer les dimention du tableau
+   * 
+   * @param largeur hauteur
+   */
+  public void setdimention(int largeur, int hauteur) {
+	  boolean newFourmis[][] = new boolean[hauteur+2][largeur+2];
+	  boolean newMurs[][] = new boolean[hauteur+2][largeur+2];
+	  int newQteGraines[][] = new int[hauteur+2][largeur+2];
+	  
+	  for (int i = 0; i < hauteur+2; i++) {
+		  for(int j = 0; j < largeur+2; j++) {
+			  if(i < (this.hauteur + 2) && j < (this.largeur + 2)) {
+				  newFourmis[i][j] = this.fourmis[i][j];
+				  newMurs[i][j] = this.murs[i][j];
+				  newQteGraines[i][j] = this.qteGraines[i][j];
+			  }
+			  else {
+				  newMurs[i][j] = false;
+				  newFourmis[i][j] = false;
+				  newQteGraines[i][j] = 0;
+			  }
+		  }
+	  }
+	  this.fourmis = newFourmis;
+	  this.murs = newMurs;
+	  this.qteGraines = newQteGraines;
+  }
   /**
    * Retourne la largeur de la fourmiliere
    * @return			la hauteur
