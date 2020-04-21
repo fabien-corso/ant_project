@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e8e08b-df9b-4122-a2b2-56cc5613e781" name="Default Changelist" comment="1st commit">
-      <change afterPath="$PROJECT_DIR$/src/jeuDesFourmis/ihm/Terrain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jeuDesFourmis/model/terrain/Fourmi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jeuDesFourmis/model/terrain/Fourmiliere.java" afterDir="false" />
+    <list default="true" id="08e8e08b-df9b-4122-a2b2-56cc5613e781" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ant_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ant_project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jeuDesFourmis/ihm/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jeuDesFourmis/ihm/terrain/Terrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jeuDesFourmis/ihm/test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jeuDesFourmis/model/terrain/Fourmiliere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jeuDesFourmis/model/terrain/Fourmiliere.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,26 +47,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="C:\Users\Fabien\Documents\Licence info\Java\IHM\ant_project\.idea" />
-      </set>
-    </option>
-  </component>
   <component name="ProjectId" id="1aX4s9BuhCMURzgiNzOoVNrk0p8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -48,17 +68,49 @@
       <recent name="C:\Users\Fabien\Documents\Licence info\Java\IHM\ant_project\src" />
     </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Fourmiliere" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="jeuDesFourmis.model.terrain.Fourmiliere" />
+      <module name="ant_project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jeuDesFourmis.model.terrain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="jeuDesFourmis.ihm.Test" />
+      <module name="ant_project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jeuDesFourmis.ihm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="JarApplication" nameIsGenerated="true">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JAR Application.Unnamed" />
+      <item itemvalue="Application.Fourmiliere" />
+      <item itemvalue="Application.Test" />
+    </list>
+    <recent_temporary>
       <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Fourmiliere" />
       </list>
-    </option>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -70,7 +122,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586868808284</updated>
-      <workItem from="1586868811425" duration="1729000" />
+      <workItem from="1586868811425" duration="3153000" />
+      <workItem from="1587380204613" duration="356000" />
+      <workItem from="1587466685499" duration="85000" />
+      <workItem from="1587468732794" duration="13335000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit">
       <created>1586870178960</created>
@@ -79,25 +134,61 @@
       <option name="project" value="LOCAL" />
       <updated>1586870178961</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1st commit">
+      <created>1586870869586</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586870869586</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1st commit">
+      <created>1586870962049</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586870962049</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1st commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st commit" />
+    <MESSAGE value="Affichage du terrain et de ses différents éléments par couche.&#10;StaticLayer pour les murs.&#10;DynamicLayer pour les fourmis et graines.&#10;&#10;Terrain agence les layer comme il faut et retourne le panel définitif, d'autres méthodes à venir dans cette classe.&#10;&#10;Ajout d'un getteur sur listFourmis dans Fourmiliere.java&#10;&#10;class Test.java pour tester cet affichage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Affichage du terrain et de ses différents éléments par couche.&#10;StaticLayer pour les murs.&#10;DynamicLayer pour les fourmis et graines.&#10;&#10;Terrain agence les layer comme il faut et retourne le panel définitif, d'autres méthodes à venir dans cette classe.&#10;&#10;Ajout d'un getteur sur listFourmis dans Fourmiliere.java&#10;&#10;class Test.java pour tester cet affichage" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="262" y="0" key="CommitChangelistDialog2" timestamp="1586870868837">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="174" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587469988008">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="262" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586870868837" />
-    <state x="463" y="107" key="FileChooserDialogImpl" timestamp="1586869996389">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="174" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1299.741@67.27.1299.741" timestamp="1587469988008" />
+    <state x="524" y="115" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1587478362451">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="524" y="115" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1299.741@67.27.1299.741" timestamp="1587478362451" />
+    <state x="316" y="27" width="946" height="741" key="CommitChangelistDialog2" timestamp="1587482175126">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="262" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586870961223" />
+    <state x="316" y="27" width="946" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1587482175126" />
+    <state x="507" y="136" width="424" height="484" key="FileChooserDialogImpl" timestamp="1587468780087">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="463" y="107" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586869996389" />
+    <state x="507" y="136" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1587468780087" />
     <state x="509" y="280" key="Github.CreateGistDialog" timestamp="1586869923188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -110,5 +201,42 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="416" y="71" key="Github.UntrackedFilesDialog/0.0.1366.728@0.0.1366.728" timestamp="1586870094775" />
+    <state width="1253" height="244" key="GridCell.Tab.0.bottom" timestamp="1587482072637">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="244" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1587482072637" />
+    <state width="1253" height="244" key="GridCell.Tab.0.center" timestamp="1587482072636">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="244" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1587482072636" />
+    <state width="1253" height="244" key="GridCell.Tab.0.left" timestamp="1587482072636">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="244" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1587482072636" />
+    <state width="1253" height="244" key="GridCell.Tab.0.right" timestamp="1587482072636">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="244" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1587482072636" />
+    <state x="411" y="80" width="590" height="633" key="RollbackChangesDialog" timestamp="1587469186867">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="411" y="80" width="590" height="633" key="RollbackChangesDialog/67.27.1299.741@67.27.1299.741" timestamp="1587469186867" />
+    <state x="205" y="31" key="SettingsEditor" timestamp="1587469650930">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="205" y="31" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1587469650930" />
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1586870982981">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586870982981" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1587380203613">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587380203613" />
+    <state x="446" y="196" width="668" height="423" key="git4idea.merge.GitPullDialog" timestamp="1587469658120">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="399" y="166" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1586871494213" />
+    <state x="446" y="196" width="668" height="423" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1587469658120" />
   </component>
 </project>

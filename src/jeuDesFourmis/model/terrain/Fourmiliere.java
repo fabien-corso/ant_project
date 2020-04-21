@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @author abergey
  * @author abrunet 
  *          correction largeur-hauteur
- *          correction boucle infinie si fourmi bloquÃ©e
+ *          correction boucle infinie si fourmi bloquée
  * @version 1.2
  *          
  */
@@ -20,13 +20,13 @@ public class Fourmiliere {
   private int largeur, hauteur ;
 
   // la liste des fourmis de la fourmiliere. 
-  // Attention : la position X,Y d'une fourmi doit correspondre Ã  un booleen true 
+  // Attention : la position X,Y d'une fourmi doit correspondre à un booleen true 
   // dans le tableau fourmis
   private List<Fourmi> lesFourmis ;  
 	
   // Tableaux contenant les murs, les fourmis et les graines. 
   // Attention : pour un terrain [1..hauteur]x[1..largeur], ces tableaux 
-  // sont indicÃ©s de [0..hauteur+1][0..largeur+1], cela permet de simplifier 
+  // sont indicés de [0..hauteur+1][0..largeur+1], cela permet de simplifier 
   // certains traitements en ne traitant pas le cas particulier des bordures. 
   private boolean murs[][];
   private boolean fourmis[][]; 
@@ -35,7 +35,7 @@ public class Fourmiliere {
   private static final int QMAX = 4;  	
     
   /**
-   * CrÃ©e une fourmiliere de largeur l et de hauteur h. 
+   * Crée une fourmiliere de largeur l et de hauteur h. 
    * @param l			largeur 
    * @param h			hauteur
    */
@@ -46,7 +46,7 @@ public class Fourmiliere {
   }
   /*
    * ajout fait
-   * clear crée le tableau par défaut
+   * clear cr?e le tableau par d?faut
    */
   public void clear() {
     this.lesFourmis = new LinkedList<Fourmi>(); 
@@ -113,7 +113,7 @@ public class Fourmiliere {
 
   /**
    * Presence d'un mur au point  (x,y) du terrain 
-   * @param x			coordonnÃ©e
+   * @param x			coordonnée
    * @param y			abcisse
    * @return			vrai si il y a un mur
    */
@@ -123,7 +123,7 @@ public class Fourmiliere {
 
   /**
    * Positionne un mur en au point (x,y) du terrain
-   * @param x			coordonnÃ©e	
+   * @param x			coordonnée	
    * @param y			abciss'e
    * @param m			vrai si l'on veut poser un mur, faux sinon
    */
@@ -138,12 +138,16 @@ public class Fourmiliere {
    * @param y		abcisse
    * @return		vrai si il y a une fourmi
    */
-  public boolean contientFourmi(int x, int y){
-    return fourmis[y][x];
-  }
+  public boolean contientFourmi(int x, int y){ return fourmis[y][x]; }
+
+    /**
+     * Retourne la liste des fourmies
+     * @return		Une list de Fourmi
+     */
+    public List<Fourmi> getFourmis(){ return this.lesFourmis; }
 	
   /**
-   * Ajoute (ou remplace) une fourmi non chargÃ©e au point (x,y) du terrain
+   * Ajoute (ou remplace) une fourmi non chargée au point (x,y) du terrain
    * @param x	    coordonnee
    * @param y		abcisse
    */
@@ -156,10 +160,10 @@ public class Fourmiliere {
   }
 		
   /**
-   * Retourne la quantitÃ© de graine au point (x,y) du terrain
+   * Retourne la quantité de graine au point (x,y) du terrain
    * @param x		coordonnnee
    * @param y		abcisse
-   * @return		la quantitÃ© de graine
+   * @return		la quantité de graine
    */
   public int getQteGraines(int x,  int y) {
     return this.qteGraines[y][x];
@@ -169,7 +173,7 @@ public class Fourmiliere {
    * Positionne des graines au point (x,y) du terrain 
    * @param x		coordonnee
    * @param y		abcisse
-   * @param qte	le nombre de graines que l'on souhaite poser. Si qte !E [0..QMAX] rien n'est effectuÃ©
+   * @param qte	le nombre de graines que l'on souhaite poser. Si qte !E [0..QMAX] rien n'est effectué
    */
   public void setQteGraines(int x, int y, int qte) {
     //assert (qte >=0 && qte <=QMAX); 
@@ -181,7 +185,7 @@ public class Fourmiliere {
 
   /**
    * Compte les graines du point (x,y) et des cellules voisines 
-   * Les voisines s'entendent au sens de 8-connexitÃ©. 
+   * Les voisines s'entendent au sens de 8-connexité. 
    * On ne compte pas les graines sur les murs) 
    * @param x		coordonnee
    * @param y		abcisse
@@ -198,15 +202,15 @@ public class Fourmiliere {
   }
 	
   /**
-   * Evolution d'une Ã©tape de la fourmiliÃ¨re
-   * Pour chaque fourmi f de la foumiliÃ¨re. 
+   * Evolution d'une étape de la fourmilière
+   * Pour chaque fourmi f de la foumilière. 
    *     1) si il y a une(ou des) graines sur la case, et que 
    *       la fourmi ne porte rien : 
-   *     		on choisit alÃ©atoirement de charger ou non une graine, 
+   *     		on choisit aléatoirement de charger ou non une graine, 
    *                  en fonction du nombre de graines autour. 
-   *     2) f se deplace alÃ©atoirement d'une case (en Ã©vitant les murs)
-   *     3) si f est chargÃ©e et qu'il reste de la place pour une graine, 
-   *          on choisit alÃ©atoirement de poser ou non  la graine, 
+   *     2) f se deplace aléatoirement d'une case (en évitant les murs)
+   *     3) si f est chargée et qu'il reste de la place pour une graine, 
+   *          on choisit aléatoirement de poser ou non  la graine, 
    *          en fonction du nombre de graines autour.  
    *        
    */
@@ -223,10 +227,10 @@ public class Fourmiliere {
 	  qteGraines[posY][posX]--;					
 	}
       }
-      // la fourmi f se dÃ©place. 
+      // la fourmi f se déplace. 
       int deltaX ; 
       int deltaY ; 
-      // cptEssai compte les essais de dÃ©placements pour eviter les blocages
+      // cptEssai compte les essais de déplacements pour eviter les blocages
       int cptEssai = 0 ; 
       do {
 	cptEssai++ ; 
@@ -265,7 +269,7 @@ public class Fourmiliere {
 	    break ; 								     
 	  }
 	// On tire au sort jusqu'a ce qu'on soit tombe sur une case vide
-	// ou bien qu'on ait essayÃ© 99 fois. 
+	// ou bien qu'on ait essayé 99 fois. 
       } while((murs[deltaY][deltaX] || fourmis[deltaY][deltaX]) && cptEssai < 100);
       fourmis[posY][posX]=false; 
       fourmis[deltaY][deltaX]=true; 
@@ -283,11 +287,11 @@ public class Fourmiliere {
   }
 
 
-  // mÃ©thodes d'affichage
+  // méthodes d'affichage
   /** 
    * Retourne une chaine affichant les graines sur le terrain 
    *    (X pour un mur ou 1 entier pour le nbgraines)
-   * @return 	la chaine reprÃ©sentant le terrain
+   * @return 	la chaine représentant le terrain
    */
   public String stringGraines() {
     String res = "" ; 
@@ -311,7 +315,7 @@ public class Fourmiliere {
   /** 
    * Retourne une chaine affichant les fourmis sur le terrain 
    *      (X pour un mur ou 0 pour la fourmi)
-   * @return 	la chaine reprÃ©sentant le terrain. 
+   * @return 	la chaine représentant le terrain. 
    */
   public String stringFourmis() {
     String res = "" ; 
@@ -331,7 +335,7 @@ public class Fourmiliere {
 
   /** 
    * Retourne une chaine affichant le le terrain (X pour un mur)
-   * @return 	la chaine reprÃ©sentant le terrain. 
+   * @return 	la chaine représentant le terrain. 
    */
   public String stringMurs() {
     String res = "" ; 
@@ -357,10 +361,10 @@ public class Fourmiliere {
     // La fourmilere
     Fourmiliere f = new Fourmiliere(20,10);
 			
-    // On crÃ©e quelques murs
+    // On crée quelques murs
     for (int i =1; i <4; i++)
       f.setMur(i, 2*i, true);
-    // On ajoute 3 fourmis dans la fourmiliÃ¨re
+    // On ajoute 3 fourmis dans la fourmilière
     f.ajouteFourmi(1, 1);
     f.ajouteFourmi(2, 2);
     f.ajouteFourmi(3, 3);
@@ -370,7 +374,7 @@ public class Fourmiliere {
       f.setQteGraines(2*i , 11-i , 1);
     }
 			
-    // On affiche les probabilitÃ©s de prise et dÃ©pot.  
+    // On affiche les probabilités de prise et dépot.  
     System.out.println("proba      Prise      Pause ");
     for (int i = 0 ; i <24 ; i++){
       System.out.println("   "+i+"   "+String.format("%f2", Fourmi.probaPrend(i))+"  "+
