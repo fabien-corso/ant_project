@@ -102,6 +102,8 @@ public class Fourmiliere {
 	  this.fourmis = newFourmis;
 	  this.murs = newMurs;
 	  this.qteGraines = newQteGraines;
+	  this.largeur = largeur;
+	  this.hauteur = hauteur;
   }
   /**
    * Retourne la largeur de la fourmiliere
