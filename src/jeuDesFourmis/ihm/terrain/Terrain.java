@@ -6,8 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
-public class Terrain extends JLayeredPane implements MouseListener {
+public class Terrain extends JLayeredPane implements MouseListener, MouseWheelListener {
 
 	private Fourmiliere data;
 	private StaticLayer staticLayer;
@@ -48,12 +50,17 @@ public class Terrain extends JLayeredPane implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {
-		this.dispatchEvent(mouseEvent);
+		//this.dispatchEvent(mouseEvent);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent mouseEvent) {
-
+		if(!mouseEvent.isShiftDown()) {
+			this.staticLayer.addMurs(mouseEvent);
+		}
+		else {
+			this.dynamicLayer.addFourmi(mouseEvent);
+		}
 	}
 
 	@Override
@@ -69,5 +76,10 @@ public class Terrain extends JLayeredPane implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent mouseEvent) {
 
+	}
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent arg0) {
+		
 	}
 }

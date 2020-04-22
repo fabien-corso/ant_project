@@ -51,7 +51,6 @@ public class FormAleatoire extends Formulaire {
 					if(Math.random()*100 < probaFourmi)
 						data.ajouteFourmi(i, j);
 					if(Math.random()*100 < probagrain)
-						//TODO on veut plus qu'une graine par case ?
 						data.setQteGraines(i, j, (int)(Math.random()*4));
 				}
 			}

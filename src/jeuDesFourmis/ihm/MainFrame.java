@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 		this.formulaire.add(new FormAleatoire(data, this));
 		this.formulaire.add(Box.createVerticalGlue());
 		
-		this.add(this.terrain.getTerrainPanel(), BorderLayout.CENTER);
+		this.add(this.terrain, BorderLayout.CENTER);
 		this.add(this.formulaire, BorderLayout.WEST);
 		
 		this.pack();

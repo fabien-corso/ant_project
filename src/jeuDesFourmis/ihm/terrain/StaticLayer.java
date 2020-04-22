@@ -11,7 +11,7 @@ public class StaticLayer extends Layer implements MouseListener {
 
     public StaticLayer(Fourmiliere data) {
         super(data);
-        this.addMouseListener(this);
+        //this.addMouseListener(this);
     }
 
     /**
@@ -63,6 +63,14 @@ public class StaticLayer extends Layer implements MouseListener {
             this.getData().setMur(x, y, !containsWall);
             this.repaint();
         }
+    }
+    
+    public void addMurs(MouseEvent mouseEvent) {
+    	int x = mouseEvent.getX() / this.DIMENSION_CASE;
+        int y = mouseEvent.getY() / this.DIMENSION_CASE;
+        boolean containsWall = this.getData().getMur(x, y);
+        this.getData().setMur(x, y, !containsWall);
+        this.repaint();
     }
 
     @Override

@@ -14,8 +14,8 @@ public class DynamicLayer extends Layer implements MouseListener, MouseWheelList
 
     public DynamicLayer(Fourmiliere data) {
         super(data);
-        this.addMouseListener(this);
-        this.addMouseWheelListener(this);
+        //this.addMouseListener(this);
+        //this.addMouseWheelListener(this);
     }
 
     @Override
@@ -80,6 +80,17 @@ public class DynamicLayer extends Layer implements MouseListener, MouseWheelList
         }
 
         System.out.println(mouseEvent.isConsumed());
+    }
+    
+    public void addFourmi(MouseEvent mouseEvent) {
+    	int x = mouseEvent.getX() / this.DIMENSION_CASE;
+        int y = mouseEvent.getY() / this.DIMENSION_CASE;
+        boolean containsAnt = this.getData().contientFourmi(x, y);
+
+        if (!containsAnt) {
+            this.getData().ajouteFourmi(x, y);
+        }
+        this.repaint();
     }
 
     @Override

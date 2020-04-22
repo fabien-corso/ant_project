@@ -27,10 +27,12 @@ public class PlayStop extends JButton implements ActionListener, Runnable {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (isPlay)
+		if (isPlay) {
 			this.setText("play");
-		else
+		}
+		else {
 			this.setText("stop");
+		}
 		this.isPlay = !this.isPlay;
 	}
 
