@@ -4,21 +4,26 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 
+import jeuDesFourmis.ihm.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class FormVide extends Formulaire{
 
 	private JButton vide;
 	
-	public FormVide(Fourmiliere data) {
-		super(data);
+	public FormVide(Fourmiliere data, MainFrame frame) {
+		super(data, frame, 1);
+		
 		this.vide = new JButton("vide");
 		this.vide.addActionListener(this);
+		
+		this.add(this.vide);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.getData().clear();
+		if(this.OptionPanelConfirme("confimer la vidage")) {
+			this.getData().clear();
+		}
 	}
-	
 }
