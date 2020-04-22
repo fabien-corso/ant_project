@@ -4,11 +4,14 @@ import jeuDesFourmis.model.terrain.Fourmiliere;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class StaticLayer extends Layer {
+public class StaticLayer extends Layer implements MouseListener {
 
     public StaticLayer(Fourmiliere data) {
         super(data);
+        this.addMouseListener(this);
     }
 
     /**
@@ -45,4 +48,35 @@ public class StaticLayer extends Layer {
         }*/
     }
 
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+        System.out.println("click dans static");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
+        System.out.println("test");
+        if(!mouseEvent.isShiftDown()) {
+            int x = mouseEvent.getX() / this.DIMENSION_CASE;
+            int y = mouseEvent.getY() / this.DIMENSION_CASE;
+            boolean containsWall = this.getData().getMur(x, y);
+            this.getData().setMur(x, y, !containsWall);
+            this.repaint();
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent mouseEvent) {
+
+    }
 }

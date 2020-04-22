@@ -16,6 +16,8 @@ public abstract class Layer extends JPanel {
         this.DIMENSION_CASE = Layer.DEFAULT_CASE_DIMENSION;
         this.setPreferredSize(new Dimension(data.getLargeur() * DIMENSION_CASE,
                 data.getHauteur() * DIMENSION_CASE));
+        this.setBounds(0,0,data.getLargeur() * DIMENSION_CASE,
+                data.getHauteur() * DIMENSION_CASE);
         this.data = data;
     }
 

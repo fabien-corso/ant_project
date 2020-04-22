@@ -34,7 +34,7 @@ public class Test {
             f.setQteGraines(2*i , 11-i , 1);
         }
         Terrain t = new Terrain(f);
-        frame.setContentPane (t.getTerrainPanel()) ;
+        frame.setContentPane(t); ;
         frame.pack () ;
         frame.setVisible (true);
     }

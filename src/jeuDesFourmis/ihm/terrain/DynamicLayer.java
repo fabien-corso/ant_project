@@ -3,12 +3,19 @@ package jeuDesFourmis.ihm.terrain;
 import jeuDesFourmis.model.terrain.Fourmi;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
-public class DynamicLayer extends Layer {
+public class DynamicLayer extends Layer implements MouseListener, MouseWheelListener {
 
     public DynamicLayer(Fourmiliere data) {
         super(data);
+        this.addMouseListener(this);
+        this.addMouseWheelListener(this);
     }
 
     @Override
@@ -52,5 +59,59 @@ public class DynamicLayer extends Layer {
                 }
             }
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+        System.out.println("click dans dynamic");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
+        if(mouseEvent.isShiftDown()) {
+            int x = mouseEvent.getX() / this.DIMENSION_CASE;
+            int y = mouseEvent.getY() / this.DIMENSION_CASE;
+            boolean containsAnt = this.getData().contientFourmi(x, y);
+
+            if (!containsAnt) {
+                this.getData().ajouteFourmi(x, y);
+            }
+            this.repaint();
+        }
+
+        System.out.println(mouseEvent.isConsumed());
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+        int x = mouseWheelEvent.getX()/this.DIMENSION_CASE;
+        int y = mouseWheelEvent.getY()/this.DIMENSION_CASE;
+        int seedsQty = this.getData().getQteGraines(x, y);
+        int rotation = mouseWheelEvent.getWheelRotation();
+        System.out.println("Wheel: " + seedsQty);
+        if(rotation < 0) {
+            if (seedsQty < 4)
+                this.getData().setQteGraines(x, y, seedsQty + 1);
+        }
+        else {
+            if (seedsQty > 0)
+                this.getData().setQteGraines(x, y, seedsQty - 1);
+        }
+        this.repaint();
     }
 }
