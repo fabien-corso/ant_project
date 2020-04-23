@@ -12,8 +12,8 @@ import java.awt.event.MouseWheelListener;
 
 public class DynamicLayer extends Layer {
 
-    public DynamicLayer(Fourmiliere data) {
-        super(data);
+    public DynamicLayer(Fourmiliere data, int dimensionCase) {
+        super(data, dimensionCase);
         //this.addMouseListener(this);
         //this.addMouseWheelListener(this);
     }

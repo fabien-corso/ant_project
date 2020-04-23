@@ -11,6 +11,8 @@ import java.awt.event.MouseWheelListener;
 
 public class Terrain extends JLayeredPane implements MouseListener, MouseWheelListener {
 
+	public static final int DEFAULT_CASE_DIMENSION = 5;
+	public final int CASE_DIMENSION;
 	private Fourmiliere data;
 	private StaticLayer staticLayer;
 	private DynamicLayer dynamicLayer;
@@ -23,13 +25,13 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 	 */
 	public Terrain(Fourmiliere data) {
 		super();
-		this.setPreferredSize(new Dimension(data.getLargeur() * 5,
-				data.getHauteur() * 5));
-		this.setBounds(0,0,data.getLargeur() * 5,
-				data.getHauteur() * 5);
+		this.CASE_DIMENSION = Terrain.DEFAULT_CASE_DIMENSION;
+		//Attribue sa taille au panel et le place correctement
+		this.setPreferredSize(new Dimension(data.getLargeur() * this.CASE_DIMENSION,
+				data.getHauteur() * this.CASE_DIMENSION));
 		this.data = data;
-		this.staticLayer = new StaticLayer(data);
-		this.dynamicLayer = new DynamicLayer(data);
+		this.staticLayer = new StaticLayer(data, this.CASE_DIMENSION);
+		this.dynamicLayer = new DynamicLayer(data, this.CASE_DIMENSION);
 
 		this.staticLayer.setOpaque(false);
 		this.dynamicLayer.setOpaque(false);
@@ -39,6 +41,27 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 		this.add(this.staticLayer, Integer.valueOf(0));
 		this.addMouseListener(this);
 		this.addMouseWheelListener(this);
+	}
+
+	/**
+	 * Redéssine le layer dynamique (fourmis + graines)
+	 */
+	public void refresh () {
+		SwingUtilities.invokeLater (new Runnable () {
+			public void run () {
+				dynamicLayer.repaint();
+			}}) ;
+	}
+
+	/**
+	 * Redéssine tout le terrain
+	 */
+	public void refreshAll() {
+		SwingUtilities.invokeLater (new Runnable () {
+			public void run () {
+				staticLayer.repaint();
+			}}) ;
+		this.refresh();
 	}
 
 	/**

@@ -9,8 +9,8 @@ import java.awt.event.MouseListener;
 
 public class StaticLayer extends Layer {
 
-    public StaticLayer(Fourmiliere data) {
-        super(data);
+    public StaticLayer(Fourmiliere data, int dimensionCase) {
+        super(data, dimensionCase);
         //this.addMouseListener(this);
     }
 

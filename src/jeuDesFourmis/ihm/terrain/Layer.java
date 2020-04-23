@@ -9,15 +9,14 @@ public abstract class Layer extends JPanel {
 
     private Fourmiliere data;
     public final int DIMENSION_CASE;
-    public static final int DEFAULT_CASE_DIMENSION = 5;
 
-    public Layer(Fourmiliere data) {
+    public Layer(Fourmiliere data, int dimensionCase) {
         super(new BorderLayout ());
-        this.DIMENSION_CASE = Layer.DEFAULT_CASE_DIMENSION;
-        this.setPreferredSize(new Dimension(data.getLargeur() * DIMENSION_CASE,
-                data.getHauteur() * DIMENSION_CASE));
-        this.setBounds(0,0,data.getLargeur() * DIMENSION_CASE,
-                data.getHauteur() * DIMENSION_CASE);
+        this.DIMENSION_CASE = dimensionCase;
+        this.setPreferredSize(new Dimension(data.getLargeur() * this.DIMENSION_CASE,
+                data.getHauteur() * this.DIMENSION_CASE));
+        this.setBounds(0,0,data.getLargeur() * this.DIMENSION_CASE,
+                data.getHauteur() * this.DIMENSION_CASE);
         this.data = data;
     }
 
