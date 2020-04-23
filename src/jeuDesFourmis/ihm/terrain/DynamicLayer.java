@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-public class DynamicLayer extends Layer implements MouseListener, MouseWheelListener {
+public class DynamicLayer extends Layer {
 
     public DynamicLayer(Fourmiliere data) {
         super(data);
@@ -60,27 +60,6 @@ public class DynamicLayer extends Layer implements MouseListener, MouseWheelList
             }
         }
     }
-
-    @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-        System.out.println("click dans dynamic");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent mouseEvent) {
-        if(mouseEvent.isShiftDown()) {
-            int x = mouseEvent.getX() / this.DIMENSION_CASE;
-            int y = mouseEvent.getY() / this.DIMENSION_CASE;
-            boolean containsAnt = this.getData().contientFourmi(x, y);
-
-            if (!containsAnt) {
-                this.getData().ajouteFourmi(x, y);
-            }
-            this.repaint();
-        }
-
-        System.out.println(mouseEvent.isConsumed());
-    }
     
     public void addFourmi(MouseEvent mouseEvent) {
     	int x = mouseEvent.getX() / this.DIMENSION_CASE;
@@ -93,23 +72,7 @@ public class DynamicLayer extends Layer implements MouseListener, MouseWheelList
         this.repaint();
     }
 
-    @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+    public void addSeeds (MouseWheelEvent mouseWheelEvent) {
         int x = mouseWheelEvent.getX()/this.DIMENSION_CASE;
         int y = mouseWheelEvent.getY()/this.DIMENSION_CASE;
         int seedsQty = this.getData().getQteGraines(x, y);

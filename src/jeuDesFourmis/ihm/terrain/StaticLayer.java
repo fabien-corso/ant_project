@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class StaticLayer extends Layer implements MouseListener {
+public class StaticLayer extends Layer {
 
     public StaticLayer(Fourmiliere data) {
         super(data);
@@ -24,7 +24,7 @@ public class StaticLayer extends Layer implements MouseListener {
         graphics.setColor(Color.BLACK);
 
         for (int i = 0; i < this.getData().getLargeur(); i++) {
-            for(int j = 0; j < this.getData().getHauteur(); j++) {
+            for(int j = 0; j < this.getData().getHauteur() ; j++) {
                 if (this.getData().getMur(i, j)) {
                     int x = i * this.DIMENSION_CASE;
                     int y = j * this.DIMENSION_CASE;
@@ -48,24 +48,7 @@ public class StaticLayer extends Layer implements MouseListener {
         }*/
     }
 
-    @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-        System.out.println("click dans static");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println("test");
-        if(!mouseEvent.isShiftDown()) {
-            int x = mouseEvent.getX() / this.DIMENSION_CASE;
-            int y = mouseEvent.getY() / this.DIMENSION_CASE;
-            boolean containsWall = this.getData().getMur(x, y);
-            this.getData().setMur(x, y, !containsWall);
-            this.repaint();
-        }
-    }
-    
-    public void addMurs(MouseEvent mouseEvent) {
+    public void addWall(MouseEvent mouseEvent) {
     	int x = mouseEvent.getX() / this.DIMENSION_CASE;
         int y = mouseEvent.getY() / this.DIMENSION_CASE;
         boolean containsWall = this.getData().getMur(x, y);
@@ -73,18 +56,4 @@ public class StaticLayer extends Layer implements MouseListener {
         this.repaint();
     }
 
-    @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent mouseEvent) {
-
-    }
 }

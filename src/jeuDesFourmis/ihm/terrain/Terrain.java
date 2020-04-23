@@ -38,6 +38,7 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 		this.add(this.dynamicLayer, Integer.valueOf(-1));
 		this.add(this.staticLayer, Integer.valueOf(0));
 		this.addMouseListener(this);
+		this.addMouseWheelListener(this);
 	}
 
 	/**
@@ -56,7 +57,7 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 	@Override
 	public void mousePressed(MouseEvent mouseEvent) {
 		if(!mouseEvent.isShiftDown()) {
-			this.staticLayer.addMurs(mouseEvent);
+			this.staticLayer.addWall(mouseEvent);
 		}
 		else {
 			this.dynamicLayer.addFourmi(mouseEvent);
@@ -79,7 +80,7 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 	}
 
 	@Override
-	public void mouseWheelMoved(MouseWheelEvent arg0) {
-		
+	public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+		this.dynamicLayer.addSeeds(mouseWheelEvent);
 	}
 }

@@ -72,7 +72,7 @@ public class Fourmiliere {
    * @return 			la hauteur
    */
   public int getLargeur() {
-    return largeur; 
+    return largeur + 2;
   }
   /*
    * ajout fait
@@ -110,7 +110,7 @@ public class Fourmiliere {
    * @return			la hauteur
    */
   public int getHauteur() {
-    return hauteur; 
+    return hauteur + 2;
   }
 
   /**
