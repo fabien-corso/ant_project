@@ -49,13 +49,17 @@ public class PlayStop extends JButton implements ActionListener, Runnable {
 
 	@Override
 	public void run() {
-		while (this.isPlay) {
+		while (true) {
 			try {
 				TimeUnit.SECONDS.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			this.data.evolue();
+			System.out.println(this.isPlay);
+			if(this.isPlay) {
+				this.data.evolue();
+				System.out.println("evolution");
+			}
 			this.frame.getTerrain().refresh();
 		}
 	}
