@@ -17,11 +17,7 @@ public abstract class Layer extends JPanel {
         this.area = new Area(cPoint, nbOfCases);
         this.DIMENSION_CASE = dimensionCase;
         this.data = data;
-
-        this.setPreferredSize(new Dimension(data.getLargeur() * this.DIMENSION_CASE,
-                data.getHauteur() * this.DIMENSION_CASE));
-        this.setBounds(0,0,data.getLargeur() * this.DIMENSION_CASE,
-                data.getHauteur() * this.DIMENSION_CASE);
+        this.updatePanelSize();
     }
 
     public Layer(Fourmiliere data, int dimensionCase) {
@@ -47,6 +43,13 @@ public abstract class Layer extends JPanel {
         g2DCopie.dispose () ;
     }
 
+    public void updatePanelSize() {
+        this.setPreferredSize(new Dimension(data.getLargeur() * this.DIMENSION_CASE,
+                data.getHauteur() * this.DIMENSION_CASE));
+        this.setBounds(0,0,data.getLargeur() * this.DIMENSION_CASE,
+                data.getHauteur() * this.DIMENSION_CASE);
+    }
+
     public Fourmiliere getData() {
         return data;
     }
@@ -57,5 +60,14 @@ public abstract class Layer extends JPanel {
 
     public Area getArea() {
         return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public void setDimension(Dimension d) {
+        this.area.setDimensionArea(d);
+        this.updatePanelSize();
     }
 }

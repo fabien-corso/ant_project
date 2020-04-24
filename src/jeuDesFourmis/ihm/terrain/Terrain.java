@@ -68,19 +68,23 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 	}
 
 	/**
+	 *
+	 */
+	public void refreshDimensions() {
+		this.setSize(new Dimension(this.data.getLargeur() * this.CASE_DIMENSION,
+				this.data.getHauteur() * this.CASE_DIMENSION));
+		Dimension dimension = new Dimension(this.data.getLargeur(), this.data.getHauteur());
+		this.staticLayer.setDimension(dimension);
+		this.dynamicLayer.setDimension(dimension);
+		System.out.println(this.getWidth() + " - " + this.getHeight());
+	}
+
+	/**
 	 * Retourne le panel du terrain avec les layers correctements agencés.
 	 * @return
 	 */
 	public Layer getTerrainPanel() {
 		return this.dynamicLayer;
-	}
-	
-	/**
-	 * 
-	 */
-	public void refreshDimension() {
-		this.setPreferredSize(new Dimension(data.getLargeur() * this.CASE_DIMENSION,
-				data.getHauteur() * this.CASE_DIMENSION));
 	}
 
 	@Override
