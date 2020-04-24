@@ -19,6 +19,8 @@ public class MainFrame extends AntSimulationFrame {
 	private Fourmiliere data;
 	private Box formulaire;
 	private PlayStop playStop;
+	
+	private boolean isPlayed;
 	private List<AntSimulationFrame> allFrames;
 
 	public MainFrame() {
@@ -28,6 +30,7 @@ public class MainFrame extends AntSimulationFrame {
 		this.setTerrain(new Terrain(this.data));
 		this.formulaire = Box.createVerticalBox();
 		
+		this.isPlayed = false;
 		this.formulaire.add(new FormDimension(data, this));
 		this.formulaire.add(new FormVide(data, this));
 		this.formulaire.add(new FormAleatoire(data, this));
@@ -60,6 +63,13 @@ public class MainFrame extends AntSimulationFrame {
 
 	public void removeFrame(AntSimulationFrame frame) {
 		this.allFrames.remove(frame);
+	}
+	public boolean getPlayed() {
+		return this.isPlayed;
+	}
+	
+	public void setPlayed(boolean played) {
+		this.isPlayed = played;
 	}
 
 	@Override
