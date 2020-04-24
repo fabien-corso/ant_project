@@ -53,4 +53,8 @@ public abstract class Formulaire extends JPanel implements ActionListener {
 	public boolean OptionPanelConfirme(String message) {
 		return JOptionPane.showConfirmDialog(main, message, "confirmation ?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
 	}
+	
+	public void OptionPanelAlert(String message) {
+		JOptionPane.showMessageDialog(main, message, "alerte !", JOptionPane.WARNING_MESSAGE);
+	}
 }

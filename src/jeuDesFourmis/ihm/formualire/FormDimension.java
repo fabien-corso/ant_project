@@ -13,7 +13,7 @@ public class FormDimension extends Formulaire {
 
 	//attribue
 	private JTextField hauteur;
-	private JTextField largueur;
+	private JTextField largeur;
 	private JButton valide;
 	
 	/**
@@ -26,13 +26,13 @@ public class FormDimension extends Formulaire {
 		super(data, frame, 3);
 		
 		this.hauteur = new JTextField("" + (this.getData().getHauteur() - 2));
-		this.largueur = new JTextField("" + (this.getData().getLargeur() - 2));
+		this.largeur = new JTextField("" + (this.getData().getLargeur() - 2));
 		
 		this.valide = new JButton("valide les longueurs");
 		this.valide.addActionListener(this);
 		
 		this.add(this.hauteur);
-		this.add(this.largueur);
+		this.add(this.largeur);
 		this.add(this.valide);
 	}
 	/**
@@ -42,7 +42,7 @@ public class FormDimension extends Formulaire {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(this.OptionPanelConfirme("confimer les nouvelle dimension ?")) {
-			int valeurLargeur = Integer.parseInt(this.largueur.getText()) - 2;
+			int valeurLargeur = Integer.parseInt(this.largeur.getText()) - 2;
 			int valeurHauteur = Integer.parseInt(this.hauteur.getText()) - 2;
 			this.getData().setdimention(valeurLargeur, valeurHauteur);
 			this.refreshTerrain();

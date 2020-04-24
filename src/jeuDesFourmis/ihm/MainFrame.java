@@ -47,4 +47,8 @@ public class MainFrame extends JFrame {
 		return this.terrain;
 	}
 	
+	public void setVisibilityFormulaire(boolean isVisible) {
+		this.formulaire.setVisible(isVisible);
+	}
+	
 }

@@ -24,22 +24,25 @@ public class PlayStop extends JButton implements ActionListener, Runnable {
 	public PlayStop(Fourmiliere data, MainFrame frame) {
 		super("play");
 		
+		this.isPlay = false;
+		
 		this.data = data;
 		this.frame = frame;
 		
 		this.loopSimulation = new Thread(this);
+		this.loopSimulation.start();
 		this.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (isPlay) {
-			this.setText("play");
-			this.loopSimulation.start();
+		if (!isPlay) {
+			this.setText("stop");
+			this.frame.setVisibilityFormulaire(false);
 		}
 		else {
-			this.setText("stop");
-			this.loopSimulation.stop();
+			this.setText("play");
+			this.frame.setVisibilityFormulaire(true);
 		}
 		this.isPlay = !this.isPlay;
 	}

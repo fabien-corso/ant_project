@@ -45,25 +45,35 @@ public class FormAleatoire extends Formulaire {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(this.OptionPanelConfirme("confimer les parametre d'aléatoire ?")) {
-			int probaFourmi = Integer.parseInt(this.fourmi.getText());
-			int probaMurs = Integer.parseInt(this.murs.getText());
-			int probagrain = Integer.parseInt(this.grain.getText());
-			
-			Fourmiliere data = this.getData();
-			data.clear();
-			
-			// on commence a 1 car il y a des mur par défaut
-			for(int i = 1; i < data.getHauteur() - 1; i++ ) {
-				for(int j = 1; j < data.getHauteur() - 1; j ++) {
-					if(Math.random()*100 < probaMurs)
-						data.setMur(i, j, true);
-					if(Math.random()*100 < probaFourmi)
-						data.ajouteFourmi(i, j);
-					if(Math.random()*100 < probagrain && !data.getMur(i, j))
-						data.setQteGraines(i, j, (int)(Math.random()*4));
-				}
+			try {
+				int probaFourmi = Integer.parseInt(this.fourmi.getText());
+				int probaMurs = Integer.parseInt(this.murs.getText());
+				int probaGraine = Integer.parseInt(this.grain.getText());
+				makeRand(probaMurs, probaFourmi, probaGraine);
+				this.refreshTerrain();
+			} catch (Exception e2) {
+				this.OptionPanelAlert("l'une des probabilité n'est pas correcte");
 			}
-			this.refreshTerrain();
+		}
+	}
+	/**
+	 * faire les modification du terrain aléatoirment avec les probabilité donnés
+	 * @param probaMurs
+	 * @param probaFourmi
+	 * @param probaGraine
+	 */
+	public void makeRand(int probaMurs, int probaFourmi, int probaGraine) {
+		Fourmiliere data = this.getData();
+		data.clear();
+		for(int i = 1; i < data.getHauteur() - 1; i++ ) {
+			for(int j = 1; j < data.getHauteur() - 1; j ++) {
+				if(Math.random()*100 < probaMurs)
+					data.setMur(i, j, true);
+				if(Math.random()*100 < probaFourmi)
+					data.ajouteFourmi(i, j);
+				if(Math.random()*100 < probaGraine && !data.getMur(i, j))
+					data.setQteGraines(i, j, (int)(Math.random()*4));
+			}
 		}
 	}
 
