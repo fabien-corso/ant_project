@@ -2,8 +2,7 @@ package jeuDesFourmis.ihm.frames;
 
 import java.awt.*;
 
-import javax.swing.Box;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import jeuDesFourmis.ihm.button.PlayStop;
 import jeuDesFourmis.ihm.button.Loupe;
@@ -24,7 +23,6 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 		this.data = new Fourmiliere(100, 100);
-		
 		this.terrain = new Terrain(this.data);
 		this.formulaire = Box.createVerticalBox();
 		
