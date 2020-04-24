@@ -90,14 +90,14 @@ public class Fourmiliere {
 	  
 	  //vérification des fourmies
 	  for(int i = 0; i < this.lesFourmis.size(); i++) {
-		  if(this.lesFourmis.get(i).getX() < (largeur  + 2) && this.lesFourmis.get(i).getY() < (hauteur + 2))
+		  if(this.lesFourmis.get(i).getX() < largeur && this.lesFourmis.get(i).getY() < hauteur)
 			  newLesFourmis.add(this.lesFourmis.get(i));
 	  }
 	  
 	  //modification des tableau
-	  for (int i = 0; i < hauteur + 2; i++) {
-		  for(int j = 0; j < largeur + 2; j++) {
-			  if(i < (this.hauteur + 2)  && j < (this.largeur + 2)) {
+	  for (int i = 0; i < (hauteur + 2); i++) {
+		  for(int j = 0; j < (largeur + 2); j++) {
+			  if(i < this.hauteur + 2  && j < this.largeur + 2) {
 				  newFourmis[i][j] = this.fourmis[i][j];
 				  newMurs[i][j] = this.murs[i][j];
 				  newQteGraines[i][j] = this.qteGraines[i][j];
