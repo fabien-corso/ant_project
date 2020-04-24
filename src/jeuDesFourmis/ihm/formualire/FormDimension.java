@@ -42,7 +42,7 @@ public class FormDimension extends Formulaire {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if(this.OptionPanelConfirme("confimer les nouvelle dimension ?")) {
+		if(this.optionPanelConfirme("confimer les nouvelle dimension ?")) {
 			int valeurLargeur = Integer.parseInt(this.largeur.getText()) - 2;
 			int valeurHauteur = Integer.parseInt(this.hauteur.getText()) - 2;
 			this.getData().setdimention(valeurLargeur, valeurHauteur);

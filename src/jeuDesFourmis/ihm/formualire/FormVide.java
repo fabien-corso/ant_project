@@ -30,7 +30,7 @@ public class FormVide extends Formulaire{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(this.OptionPanelConfirme("confimer la vidage")) {
+		if(this.optionPanelConfirme("confimer la vidage")) {
 			this.getData().clear();
 			this.refreshTerrain();
 		}

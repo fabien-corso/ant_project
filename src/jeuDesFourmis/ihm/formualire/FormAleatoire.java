@@ -44,7 +44,7 @@ public class FormAleatoire extends Formulaire {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(this.OptionPanelConfirme("confimer les parametre d'aléatoire ?")) {
+		if(this.optionPanelConfirme("confimer les parametre d'aléatoire ?")) {
 			try {
 				int probaFourmi = Integer.parseInt(this.fourmi.getText());
 				int probaMurs = Integer.parseInt(this.murs.getText());
@@ -52,7 +52,7 @@ public class FormAleatoire extends Formulaire {
 				makeRand(probaMurs, probaFourmi, probaGraine);
 				this.refreshTerrain();
 			} catch (Exception e2) {
-				this.OptionPanelAlert("l'une des probabilité n'est pas correcte");
+				this.optionPanelAlert("l'une des probabilité n'est pas correcte");
 			}
 		}
 	}

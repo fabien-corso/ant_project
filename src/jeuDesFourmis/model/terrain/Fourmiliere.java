@@ -77,7 +77,7 @@ public class Fourmiliere {
   }
   
   /**
-   * ajouter pour le porjet
+   * ajouter pour le projet
    * permet de changer la dimension des différents tableaux
    * @param largeur
    * @param hauteur
@@ -87,15 +87,17 @@ public class Fourmiliere {
 	  boolean newMurs[][] = new boolean[hauteur + 2][largeur + 2];
 	  int newQteGraines[][] = new int[hauteur + 2][largeur + 2];
 	  List<Fourmi> newLesFourmis = new LinkedList<Fourmi>();
+	  
 	  //vérification des fourmies
 	  for(int i = 0; i < this.lesFourmis.size(); i++) {
-		  if(this.lesFourmis.get(i).getX() < largeur && this.lesFourmis.get(i).getY() < hauteur)
+		  if(this.lesFourmis.get(i).getX() < (largeur  + 2) && this.lesFourmis.get(i).getY() < (hauteur + 2))
 			  newLesFourmis.add(this.lesFourmis.get(i));
 	  }
+	  
 	  //modification des tableau
 	  for (int i = 0; i < hauteur + 2; i++) {
 		  for(int j = 0; j < largeur + 2; j++) {
-			  if(i < this.hauteur && j < this.largeur) {
+			  if(i < (this.hauteur + 2)  && j < (this.largeur + 2)) {
 				  newFourmis[i][j] = this.fourmis[i][j];
 				  newMurs[i][j] = this.murs[i][j];
 				  newQteGraines[i][j] = this.qteGraines[i][j];

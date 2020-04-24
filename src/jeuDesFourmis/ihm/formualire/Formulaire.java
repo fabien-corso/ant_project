@@ -30,7 +30,7 @@ public abstract class Formulaire extends JPanel implements ActionListener {
 		this.main = mainFrame;
 	}
 	/**
-	 * getter de la data
+	 * getter de data
 	 * @return data
 	 */
 	public Fourmiliere getData() {
@@ -47,11 +47,14 @@ public abstract class Formulaire extends JPanel implements ActionListener {
 	 * @param message
 	 * @return validation
 	 */
-	public boolean OptionPanelConfirme(String message) {
+	public boolean optionPanelConfirme(String message) {
 		return JOptionPane.showConfirmDialog(main, message, "confirmation ?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
 	}
-	
-	public void OptionPanelAlert(String message) {
+	/**
+	 * affichage d'une fenetre d'information pour alerté qu'un problème
+	 * @param message
+	 */
+	public void optionPanelAlert(String message) {
 		JOptionPane.showMessageDialog(main, message, "alerte !", JOptionPane.WARNING_MESSAGE);
 	}
 }
