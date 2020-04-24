@@ -15,7 +15,6 @@ import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class PlayStop extends JButton implements ActionListener {
 	
-	private boolean isPlayed;
 	private MainFrame frame;
 	
 	private AntSimulationThread antSimulationThread;
@@ -23,7 +22,6 @@ public class PlayStop extends JButton implements ActionListener {
 	public PlayStop(Fourmiliere data, MainFrame mainFrame) {
 		super("play");
 		this.antSimulationThread = new AntSimulationThread(data, mainFrame);
-		this.isPlayed = mainFrame.getPlayed();
 		this.frame = mainFrame;
 		this.addActionListener(this);
 		this.antSimulationThread.start();
@@ -31,7 +29,7 @@ public class PlayStop extends JButton implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (!this.isPlayed) {
+		if (!this.frame.getPlayed()) {
 			this.setText("stop");
 			this.frame.setVisibilityFormulaire(false);
 			this.antSimulationThread.playSimulation();
@@ -41,8 +39,7 @@ public class PlayStop extends JButton implements ActionListener {
 			this.frame.setVisibilityFormulaire(true);
 			this.antSimulationThread.stopSimulation();
 		}
-		this.isPlayed = !this.isPlayed;
-		this.frame.setPlayed(this.isPlayed);
+		this.frame.setPlayed(this.frame.getPlayed());
 	}
 	
 }
