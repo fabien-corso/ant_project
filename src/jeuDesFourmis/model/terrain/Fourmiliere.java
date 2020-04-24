@@ -82,7 +82,7 @@ public class Fourmiliere {
    * @param largeur
    * @param hauteur
    */
-  public void setdimention(int largeur, int hauteur) {
+  public void setDimensions(int largeur, int hauteur) {
 	  boolean newFourmis[][] = new boolean[hauteur + 2][largeur + 2];
 	  boolean newMurs[][] = new boolean[hauteur + 2][largeur + 2];
 	  int newQteGraines[][] = new int[hauteur + 2][largeur + 2];

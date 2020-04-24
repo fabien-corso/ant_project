@@ -4,10 +4,10 @@ package jeuDesFourmis.ihm.formualire;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import jeuDesFourmis.ihm.frames.MainFrame;
+import jeuDesFourmis.ihm.terrain.Terrain;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class FormDimension extends Formulaire {
@@ -45,8 +45,8 @@ public class FormDimension extends Formulaire {
 		if(this.optionPanelConfirme("confimer les nouvelle dimension ?")) {
 			int valeurLargeur = Integer.parseInt(this.largeur.getText()) - 2;
 			int valeurHauteur = Integer.parseInt(this.hauteur.getText()) - 2;
-			this.getData().setdimention(valeurLargeur, valeurHauteur);
-			this.refreshTerrain();
+			this.getData().setDimensions(valeurLargeur, valeurHauteur);
+			this.getMain().getTerrain().refreshDimensions();
 		}
 	}
 

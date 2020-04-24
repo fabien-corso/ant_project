@@ -17,7 +17,7 @@ public abstract class Formulaire extends JPanel implements ActionListener {
 	
 	/**
 	 * 
-	 * constructeur des formulaire générale.
+	 * constructeur des formulaire gï¿½nï¿½rale.
 	 * on a besoin de savoir combient de ligne il y a dans ce formulaire pour le gridLayout
 	 * 
 	 * @param data
@@ -36,14 +36,18 @@ public abstract class Formulaire extends JPanel implements ActionListener {
 	public Fourmiliere getData() {
 		return this.data;
 	}
-	
+
+	public MainFrame getMain() {
+		return main;
+	}
+
 	public void refreshTerrain() {
 		this.main.getTerrain().refreshAll();
-		this.main.getTerrain().refreshDimension();
+		this.main.getTerrain().refreshDimensions();
 	}
 	
 	/**
-	 * affichage d'une fenetre de confirmation et retourne le résultat de cette fénétre
+	 * affichage d'une fenetre de confirmation et retourne le rï¿½sultat de cette fï¿½nï¿½tre
 	 * @param message
 	 * @return validation
 	 */
@@ -51,7 +55,7 @@ public abstract class Formulaire extends JPanel implements ActionListener {
 		return JOptionPane.showConfirmDialog(main, message, "confirmation ?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
 	}
 	/**
-	 * affichage d'une fenetre d'information pour alerté qu'un problème
+	 * affichage d'une fenetre d'information pour alertï¿½ qu'un problï¿½me
 	 * @param message
 	 */
 	public void optionPanelAlert(String message) {
