@@ -1,5 +1,6 @@
 package jeuDesFourmis.ihm.terrain;
 
+import jeuDesFourmis.ihm.utils.Area;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 import javax.swing.*;
@@ -8,16 +9,23 @@ import java.awt.*;
 public abstract class Layer extends JPanel {
 
     private Fourmiliere data;
+    private Area area;
     public final int DIMENSION_CASE;
 
-    public Layer(Fourmiliere data, int dimensionCase) {
+    public Layer(Fourmiliere data, int dimensionCase, Point cPoint, Dimension nbOfCases) {
         super(new BorderLayout ());
+        this.area = new Area(cPoint, nbOfCases);
         this.DIMENSION_CASE = dimensionCase;
+        this.data = data;
+
         this.setPreferredSize(new Dimension(data.getLargeur() * this.DIMENSION_CASE,
                 data.getHauteur() * this.DIMENSION_CASE));
         this.setBounds(0,0,data.getLargeur() * this.DIMENSION_CASE,
                 data.getHauteur() * this.DIMENSION_CASE);
-        this.data = data;
+    }
+
+    public Layer(Fourmiliere data, int dimensionCase) {
+        this(data, dimensionCase, new Point(0,0), new Dimension(data.getLargeur(), data.getHauteur()));
     }
 
     /**
@@ -47,4 +55,7 @@ public abstract class Layer extends JPanel {
         this.data = data;
     }
 
+    public Area getArea() {
+        return area;
+    }
 }

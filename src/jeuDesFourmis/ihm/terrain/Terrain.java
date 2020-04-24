@@ -23,15 +23,16 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 	 * background transparent pour voir les 2.
 	 * @param data
 	 */
-	public Terrain(Fourmiliere data) {
+	public Terrain (Fourmiliere data, int caseDimension, Point centralPoint, Dimension dim) {
 		super();
-		this.CASE_DIMENSION = Terrain.DEFAULT_CASE_DIMENSION;
-		//Attribue sa taille au panel et le place correctement
-		this.setPreferredSize(new Dimension(data.getLargeur() * this.CASE_DIMENSION,
-				data.getHauteur() * this.CASE_DIMENSION));
+		this.CASE_DIMENSION = caseDimension;
 		this.data = data;
-		this.staticLayer = new StaticLayer(data, this.CASE_DIMENSION);
-		this.dynamicLayer = new DynamicLayer(data, this.CASE_DIMENSION);
+
+		//Attribue sa taille au panel et le place correctement
+		this.setPreferredSize(new Dimension(dim.width * this.CASE_DIMENSION,dim.height * this.CASE_DIMENSION));
+
+		this.staticLayer = new StaticLayer(data, this.CASE_DIMENSION, centralPoint, dim);
+		this.dynamicLayer = new DynamicLayer(data, this.CASE_DIMENSION, centralPoint, dim);
 
 		this.staticLayer.setOpaque(false);
 		this.dynamicLayer.setOpaque(false);
@@ -43,24 +44,26 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 		this.addMouseWheelListener(this);
 	}
 
+	public Terrain(Fourmiliere data, int caseDimension) {
+		this(data, caseDimension, new Point(0, 0), new Dimension(data.getLargeur(), data.getHauteur()));
+	}
+
+	public Terrain(Fourmiliere data) {
+		this(data, Terrain.DEFAULT_CASE_DIMENSION);
+	}
+
 	/**
 	 * Redéssine le layer dynamique (fourmis + graines)
 	 */
 	public void refresh () {
-		SwingUtilities.invokeLater (new Runnable () {
-			public void run () {
-				dynamicLayer.repaint();
-			}}) ;
+		dynamicLayer.repaint();
 	}
 
 	/**
 	 * Redéssine tout le terrain
 	 */
 	public void refreshAll() {
-		SwingUtilities.invokeLater (new Runnable () {
-			public void run () {
-				staticLayer.repaint();
-			}}) ;
+		staticLayer.repaint();
 		this.refresh();
 	}
 
@@ -91,7 +94,7 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 			this.staticLayer.addWall(mouseEvent);
 		}
 		else {
-			this.dynamicLayer.addFourmi(mouseEvent);
+			this.dynamicLayer.addAnt(mouseEvent);
 		}
 	}
 

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-import jeuDesFourmis.ihm.MainFrame;
+import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class PlayStop extends JButton implements ActionListener, Runnable {
@@ -21,13 +21,13 @@ public class PlayStop extends JButton implements ActionListener, Runnable {
 	
 	private Thread loopSimulation;
 	
-	public PlayStop(Fourmiliere data, MainFrame frame) {
+	public PlayStop(Fourmiliere data, MainFrame mainFrame) {
 		super("play");
 		
 		this.isPlay = false;
 		
 		this.data = data;
-		this.frame = frame;
+		this.frame = mainFrame;
 		
 		this.loopSimulation = new Thread(this);
 		this.loopSimulation.start();

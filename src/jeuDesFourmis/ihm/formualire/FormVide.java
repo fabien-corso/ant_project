@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 
-import jeuDesFourmis.ihm.MainFrame;
+import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class FormVide extends Formulaire{
@@ -12,12 +12,12 @@ public class FormVide extends Formulaire{
 	private JButton vide;
 	/**
 	 * constructeur du formualaire qui vide le terrain.
-	 * 
+	 *
 	 * @param data
-	 * @param frame
+	 * @param mainFrame
 	 */
-	public FormVide(Fourmiliere data, MainFrame frame) {
-		super(data, frame, 1);
+	public FormVide(Fourmiliere data, MainFrame mainFrame) {
+		super(data, mainFrame, 1);
 		
 		this.vide = new JButton("vide");
 		this.vide.addActionListener(this);
@@ -26,7 +26,7 @@ public class FormVide extends Formulaire{
 	}
 	/**
 	 * permet au Jbutton de lancer le traitement.
-	 * le traitement est de remmetre par défault le terrain (le vide)
+	 * le traitement est de remmetre par dï¿½fault le terrain (le vide)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

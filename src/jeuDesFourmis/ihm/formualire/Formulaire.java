@@ -1,15 +1,12 @@
 package jeuDesFourmis.ihm.formualire;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import jeuDesFourmis.ihm.MainFrame;
+import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public abstract class Formulaire extends JPanel implements ActionListener {
@@ -24,13 +21,13 @@ public abstract class Formulaire extends JPanel implements ActionListener {
 	 * on a besoin de savoir combient de ligne il y a dans ce formulaire pour le gridLayout
 	 * 
 	 * @param data
-	 * @param frame
+	 * @param mainFrame
 	 * @param row
 	 */
-	public Formulaire(Fourmiliere data, MainFrame frame, int row) {
+	public Formulaire(Fourmiliere data, MainFrame mainFrame, int row) {
 		super(new GridLayout(row, 1, 0, 10));
 		this.data = data;
-		this.main = frame;
+		this.main = mainFrame;
 	}
 	/**
 	 * getter de la data

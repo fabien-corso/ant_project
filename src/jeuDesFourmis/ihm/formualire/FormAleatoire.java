@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import jeuDesFourmis.ihm.MainFrame;
+import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class FormAleatoire extends Formulaire {

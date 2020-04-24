@@ -1,9 +1,6 @@
 package jeuDesFourmis.ihm;
 
-import jeuDesFourmis.ihm.terrain.DynamicLayer;
-import jeuDesFourmis.ihm.terrain.StaticLayer;
-import jeuDesFourmis.ihm.terrain.Terrain;
-import jeuDesFourmis.model.terrain.Fourmiliere;
+import jeuDesFourmis.ihm.frames.MainFrame;
 
 import javax.swing.*;
 
