@@ -13,55 +13,37 @@ import javax.swing.JButton;
 import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
-public class PlayStop extends JButton implements ActionListener, Runnable {
+public class PlayStop extends JButton implements ActionListener {
 	
-	private boolean isPlay;
+	private boolean isPlayed;
 	private Fourmiliere data;
 	private MainFrame frame;
 	
-	private Thread loopSimulation;
+	private AntSimulationThread antSimulationThread;
 	
 	public PlayStop(Fourmiliere data, MainFrame mainFrame) {
 		super("play");
-		
-		this.isPlay = false;
-		
+		this.antSimulationThread = new AntSimulationThread(data, mainFrame);
+		this.isPlayed = false;
 		this.data = data;
 		this.frame = mainFrame;
-		
-		this.loopSimulation = new Thread(this);
-		this.loopSimulation.start();
 		this.addActionListener(this);
+		this.antSimulationThread.start();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (!isPlay) {
+		if (!this.isPlayed) {
 			this.setText("stop");
 			this.frame.setVisibilityFormulaire(false);
+			this.antSimulationThread.playSimulation();
 		}
 		else {
 			this.setText("play");
 			this.frame.setVisibilityFormulaire(true);
+			this.antSimulationThread.stopSimulation();
 		}
-		this.isPlay = !this.isPlay;
-	}
-
-	@Override
-	public void run() {
-		while (true) {
-			try {
-				TimeUnit.SECONDS.sleep(10);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println(this.isPlay);
-			if(this.isPlay) {
-				this.data.evolue();
-				System.out.println("evolution");
-			}
-			this.frame.getTerrain().refresh();
-		}
+		this.isPlayed = !this.isPlayed;
 	}
 	
 }

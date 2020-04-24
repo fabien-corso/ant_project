@@ -89,7 +89,6 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {
-		//this.dispatchEvent(mouseEvent);
 	}
 
 	@Override

@@ -19,5 +19,7 @@ public class Loupe extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         LoupeFrame lpFrame = new LoupeFrame(this.mainFrame);
+        this.mainFrame.addFrame(lpFrame);
+        lpFrame.setVisible(true);
     }
 }

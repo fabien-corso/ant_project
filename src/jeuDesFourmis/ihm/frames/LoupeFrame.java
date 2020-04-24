@@ -9,21 +9,20 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class LoupeFrame extends JFrame implements WindowListener {
+public class LoupeFrame extends AntSimulationFrame implements WindowListener {
 
     private MainFrame mainFrame;
     private Fourmiliere data;
-    private Terrain terrain;
 
     public LoupeFrame(MainFrame mf) {
         this.mainFrame = mf;
         this.data = mf.getData();
-        this.terrain =  new ZoomedTerrain(this.data, new Point(25,25), new Dimension(11,11));
-        this.add(this.terrain, BorderLayout.CENTER);
+        this.setTerrain(new ZoomedTerrain(this.data, new Point(25,25), new Dimension(11,11)));
+        this.add(this.getTerrain(), BorderLayout.CENTER);
         this.addWindowListener(this);
         this.pack();
-        this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
     @Override
@@ -52,11 +51,12 @@ public class LoupeFrame extends JFrame implements WindowListener {
 
     @Override
     public void windowActivated(WindowEvent windowEvent) {
-        SwingUtilities.invokeLater( () -> this.terrain.refreshAll());
+        SwingUtilities.invokeLater( () -> this.getTerrain().refreshAll());
     }
 
     @Override
     public void windowDeactivated(WindowEvent windowEvent) {
         SwingUtilities.invokeLater( () -> this.mainFrame.getTerrain().refreshAll());
     }
+
 }

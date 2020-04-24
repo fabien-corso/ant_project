@@ -32,7 +32,6 @@ public class DynamicLayer extends Layer {
         int startY = this.getArea().getFirstPoint().y;
 
         for (Fourmi f : this.getData().getFourmis()) {
-            System.out.println(f.getX() +" - " + f.getY());
             if (this.getArea().containsPoint(f.getX(), f.getY()))
             {
                 if (f.porte()) {

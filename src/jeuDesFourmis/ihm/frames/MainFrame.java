@@ -1,6 +1,8 @@
 package jeuDesFourmis.ihm.frames;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -12,18 +14,18 @@ import jeuDesFourmis.ihm.formualire.FormVide;
 import jeuDesFourmis.ihm.terrain.Terrain;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends AntSimulationFrame {
 	
 	private Fourmiliere data;
-	
-	private Terrain terrain;
 	private Box formulaire;
 	private PlayStop playStop;
-
+	private List<AntSimulationFrame> allFrames;
 
 	public MainFrame() {
+		super("Ant simulation");
 		this.data = new Fourmiliere(100, 100);
-		this.terrain = new Terrain(this.data);
+		this.allFrames = new ArrayList<>();
+		this.setTerrain(new Terrain(this.data));
 		this.formulaire = Box.createVerticalBox();
 		
 		this.formulaire.add(new FormDimension(data, this));
@@ -34,17 +36,13 @@ public class MainFrame extends JFrame {
 		
 		this.playStop = new PlayStop(data, this);
 
-		this.add(this.terrain, BorderLayout.CENTER);
+		this.add(this.getTerrain(), BorderLayout.CENTER);
 		this.add(this.formulaire, BorderLayout.WEST);
 		this.add(this.playStop, BorderLayout.SOUTH);
 
 		this.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
 		this.pack();
 		this.setVisible(true);
-	}
-	
-	public Terrain getTerrain() {
-		return this.terrain;
 	}
 
 	public Fourmiliere getData() {
@@ -54,5 +52,21 @@ public class MainFrame extends JFrame {
 	public void setVisibilityFormulaire(boolean b) {
 		this.formulaire.setVisible(b);
 		
+	}
+
+	public void addFrame(AntSimulationFrame frame) {
+		this.allFrames.add(frame);
+	}
+
+	public void removeFrame(AntSimulationFrame frame) {
+		this.allFrames.remove(frame);
+	}
+
+	@Override
+	public void refresh() {
+		this.getTerrain().refresh();
+		for(AntSimulationFrame frame : this.allFrames) {
+			SwingUtilities.invokeLater( () -> frame.refresh());
+		}
 	}
 }
