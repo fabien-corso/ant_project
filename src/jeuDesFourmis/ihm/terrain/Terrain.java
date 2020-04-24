@@ -71,6 +71,14 @@ public class Terrain extends JLayeredPane implements MouseListener, MouseWheelLi
 	public Layer getTerrainPanel() {
 		return this.dynamicLayer;
 	}
+	
+	/**
+	 * 
+	 */
+	public void refreshDimension() {
+		this.setPreferredSize(new Dimension(data.getLargeur() * this.CASE_DIMENSION,
+				data.getHauteur() * this.CASE_DIMENSION));
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {

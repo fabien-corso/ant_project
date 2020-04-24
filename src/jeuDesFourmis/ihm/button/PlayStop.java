@@ -10,17 +10,23 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
+import jeuDesFourmis.ihm.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class PlayStop extends JButton implements ActionListener, Runnable {
 	
 	private boolean isPlay;
 	private Fourmiliere data;
+	private MainFrame frame;
 	
 	private Thread loopSimulation;
 	
-	public PlayStop(Fourmiliere data) {
+	public PlayStop(Fourmiliere data, MainFrame frame) {
 		super("play");
+		
+		this.data = data;
+		this.frame = frame;
+		
 		this.loopSimulation = new Thread(this);
 		this.addActionListener(this);
 	}
@@ -29,9 +35,11 @@ public class PlayStop extends JButton implements ActionListener, Runnable {
 	public void actionPerformed(ActionEvent e) {
 		if (isPlay) {
 			this.setText("play");
+			this.loopSimulation.start();
 		}
 		else {
 			this.setText("stop");
+			this.loopSimulation.stop();
 		}
 		this.isPlay = !this.isPlay;
 	}
@@ -44,7 +52,8 @@ public class PlayStop extends JButton implements ActionListener, Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			this.data.evolue();			
+			this.data.evolue();
+			this.frame.getTerrain().refresh();
 		}
 	}
 	

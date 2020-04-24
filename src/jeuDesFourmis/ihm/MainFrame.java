@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.JFrame;
 
+import jeuDesFourmis.ihm.button.PlayStop;
 import jeuDesFourmis.ihm.formualire.FormAleatoire;
 import jeuDesFourmis.ihm.formualire.FormDimension;
 import jeuDesFourmis.ihm.formualire.FormVide;
@@ -17,6 +18,8 @@ public class MainFrame extends JFrame {
 	
 	private Terrain terrain;
 	private Box formulaire;
+	private PlayStop playStop;
+	
 	
 	public MainFrame() {
 		this.data = new Fourmiliere(100, 100);
@@ -30,8 +33,11 @@ public class MainFrame extends JFrame {
 		this.formulaire.add(new FormAleatoire(data, this));
 		this.formulaire.add(Box.createVerticalGlue());
 		
+		this.playStop = new PlayStop(data, this);
+		
 		this.add(this.terrain, BorderLayout.CENTER);
 		this.add(this.formulaire, BorderLayout.WEST);
+		this.add(this.playStop, BorderLayout.SOUTH);
 		
 		this.pack();
 		this.setVisible(true);

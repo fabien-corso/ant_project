@@ -44,9 +44,10 @@ public class Fourmiliere {
     hauteur = h;
 	this.clear(); 
   }
-  /*
-   * ajout fait
-   * clear cr?e le tableau par d?faut
+  
+  /**
+   * ajouter pour le projet
+   * cette fonction permet de mettre a l'état par défaut le terrain
    */
   public void clear() {
     this.lesFourmis = new LinkedList<Fourmi>(); 
@@ -74,20 +75,27 @@ public class Fourmiliere {
   public int getLargeur() {
     return largeur + 2;
   }
-  /*
-   * ajout fait
-   * permet de changer les dimention du tableau
-   * 
-   * @param largeur hauteur
+  
+  /**
+   * ajouter pour le porjet
+   * permet de changer la dimension des différents tableaux
+   * @param largeur
+   * @param hauteur
    */
   public void setdimention(int largeur, int hauteur) {
-	  boolean newFourmis[][] = new boolean[hauteur+2][largeur+2];
-	  boolean newMurs[][] = new boolean[hauteur+2][largeur+2];
-	  int newQteGraines[][] = new int[hauteur+2][largeur+2];
-	  
-	  for (int i = 0; i < hauteur+2; i++) {
-		  for(int j = 0; j < largeur+2; j++) {
-			  if(i < (this.hauteur + 2) && j < (this.largeur + 2)) {
+	  boolean newFourmis[][] = new boolean[hauteur + 2][largeur + 2];
+	  boolean newMurs[][] = new boolean[hauteur + 2][largeur + 2];
+	  int newQteGraines[][] = new int[hauteur + 2][largeur + 2];
+	  List<Fourmi> newLesFourmis = new LinkedList<Fourmi>();
+	  //vérification des fourmies
+	  for(int i = 0; i < this.lesFourmis.size(); i++) {
+		  if(this.lesFourmis.get(i).getX() < largeur && this.lesFourmis.get(i).getY() < hauteur)
+			  newLesFourmis.add(this.lesFourmis.get(i));
+	  }
+	  //modification des tableau
+	  for (int i = 0; i < hauteur + 2; i++) {
+		  for(int j = 0; j < largeur + 2; j++) {
+			  if(i < this.hauteur && j < this.largeur) {
 				  newFourmis[i][j] = this.fourmis[i][j];
 				  newMurs[i][j] = this.murs[i][j];
 				  newQteGraines[i][j] = this.qteGraines[i][j];
@@ -99,12 +107,16 @@ public class Fourmiliere {
 			  }
 		  }
 	  }
+	  
+	  //update des attribues
+	  this.lesFourmis = newLesFourmis;
 	  this.fourmis = newFourmis;
 	  this.murs = newMurs;
 	  this.qteGraines = newQteGraines;
 	  this.largeur = largeur;
 	  this.hauteur = hauteur;
   }
+  
   /**
    * Retourne la largeur de la fourmiliere
    * @return			la hauteur
