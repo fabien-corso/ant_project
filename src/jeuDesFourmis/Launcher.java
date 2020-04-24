@@ -1,6 +1,6 @@
 package jeuDesFourmis;
 
-import jeuDesFourmis.ihm.MainFrame;
+import jeuDesFourmis.ihm.frames.MainFrame;
 
 public class Launcher {
 	public static void main(String[] args) {

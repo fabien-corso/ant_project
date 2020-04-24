@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import jeuDesFourmis.ihm.MainFrame;
+import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class FormAleatoire extends Formulaire {
@@ -23,7 +23,7 @@ public class FormAleatoire extends Formulaire {
 		this.murs = new JTextField();
 		this.grain = new JTextField();
 		
-		this.aleatoire = new JButton("lancer l'aléatoire");
+		this.aleatoire = new JButton("lancer l'alï¿½atoire");
 		this.aleatoire.addActionListener(this);
 		
 		this.add(this.fourmi);
@@ -35,7 +35,7 @@ public class FormAleatoire extends Formulaire {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(this.OptionPanelConfirme("confimer les parametre d'aléatoire ?")) {
+		if(this.OptionPanelConfirme("confimer les parametre d'alï¿½atoire ?")) {
 			int probaFourmi = Integer.parseInt(this.fourmi.getText());
 			int probaMurs = Integer.parseInt(this.murs.getText());
 			int probagrain = Integer.parseInt(this.grain.getText());
@@ -43,7 +43,7 @@ public class FormAleatoire extends Formulaire {
 			Fourmiliere data = this.getData();
 			data.clear();
 			
-			// on commence a 1 car il y a des mur par défaut
+			// on commence a 1 car il y a des mur par dï¿½faut
 			for(int i = 1; i < data.getHauteur(); i++ ) {
 				for(int j = 1; j < data.getHauteur(); j ++) {
 					if(Math.random()*100 < probaMurs)

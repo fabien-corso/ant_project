@@ -9,9 +9,12 @@ import java.awt.event.MouseListener;
 
 public class StaticLayer extends Layer {
 
+    public StaticLayer(Fourmiliere data, int dimensionCase, Point cPoint, Dimension nbOfCases) {
+        super(data, dimensionCase, cPoint, nbOfCases);
+    }
+
     public StaticLayer(Fourmiliere data, int dimensionCase) {
         super(data, dimensionCase);
-        //this.addMouseListener(this);
     }
 
     /**
@@ -22,18 +25,10 @@ public class StaticLayer extends Layer {
     @Override
     protected void makeDrawing(Graphics2D graphics) {
         graphics.setColor(Color.BLACK);
-
-        for (int i = 0; i < this.getData().getLargeur(); i++) {
-            for(int j = 0; j < this.getData().getHauteur() ; j++) {
-                if (this.getData().getMur(i, j)) {
-                    int x = i * this.DIMENSION_CASE;
-                    int y = j * this.DIMENSION_CASE;
-
-                    graphics.drawRect(x, y, this.DIMENSION_CASE, this.DIMENSION_CASE);
-                }
-            }
-        }
-        /*int rows = this.getWidth()/this.DIMENSION_CASE;
+        this.drawWalls(graphics);
+        /*
+        Tracer la grille
+        int rows = this.getWidth()/this.DIMENSION_CASE;
         int columns = this.getHeight()/this.DIMENSION_CASE;
         System.out.println("Lignes: " + rows);
         System.out.println("Colonnes: " + columns);
@@ -48,9 +43,30 @@ public class StaticLayer extends Layer {
         }*/
     }
 
+    public void drawWalls(Graphics2D graphics) {
+        int startX = this.getArea().getFirstPoint().x;
+        int startY = this.getArea().getFirstPoint().y;
+        int width = this.getArea().getDimensionArea().width + startX;
+        int height = this.getArea().getDimensionArea().height + startY;
+
+        for (int i = startX; i < width; i++) {
+            for(int j = startY; j < height ; j++) {
+                if (this.getData().getMur(i, j)) {
+                    int x = (i - startX) * this.DIMENSION_CASE;
+                    int y = (j - startY) * this.DIMENSION_CASE;
+
+                    graphics.fillRect(x, y, this.DIMENSION_CASE, this.DIMENSION_CASE);
+                }
+            }
+        }
+    }
+
     public void addWall(MouseEvent mouseEvent) {
-    	int x = mouseEvent.getX() / this.DIMENSION_CASE;
-        int y = mouseEvent.getY() / this.DIMENSION_CASE;
+        int startX = this.getArea().getFirstPoint().x;
+        int startY = this.getArea().getFirstPoint().y;
+    	int x = (mouseEvent.getX() / this.DIMENSION_CASE) + startX;
+        int y = (mouseEvent.getY() / this.DIMENSION_CASE) + startY;
+
         boolean containsWall = this.getData().getMur(x, y);
         this.getData().setMur(x, y, !containsWall);
         this.repaint();
