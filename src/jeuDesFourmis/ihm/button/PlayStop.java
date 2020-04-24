@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-import jeuDesFourmis.ihm.MainFrame;
+import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
 public class PlayStop extends JButton implements ActionListener, Runnable {
