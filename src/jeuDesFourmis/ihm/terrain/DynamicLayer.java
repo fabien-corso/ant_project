@@ -3,12 +3,9 @@ package jeuDesFourmis.ihm.terrain;
 import jeuDesFourmis.model.terrain.Fourmi;
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 
 public class DynamicLayer extends Layer {
 
@@ -35,6 +32,7 @@ public class DynamicLayer extends Layer {
         int startY = this.getArea().getFirstPoint().y;
 
         for (Fourmi f : this.getData().getFourmis()) {
+            System.out.println(f.getX() +" - " + f.getY());
             if (this.getArea().containsPoint(f.getX(), f.getY()))
             {
                 if (f.porte()) {
@@ -79,7 +77,6 @@ public class DynamicLayer extends Layer {
         int startY = this.getArea().getFirstPoint().y;
         int x = (mouseEvent.getX() / this.DIMENSION_CASE) + startX;
         int y = (mouseEvent.getY() / this.DIMENSION_CASE) + startY;
-
         boolean containsAnt = this.getData().contientFourmi(x, y);
 
         if (!containsAnt) {

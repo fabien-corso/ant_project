@@ -48,10 +48,10 @@ public class Area {
     }
 
     public Point getLastPoint() {
-        int xFirst = this.centralPoint.x + (this.dimensionArea.width/2);
-        int yFirst = this.centralPoint.y + (this.dimensionArea.height/2);
+        int xLast = this.getFirstPoint().x + this.dimensionArea.width;
+        int yLast = this.getFirstPoint().y + this.dimensionArea.height;
 
-        return new Point(xFirst, yFirst);
+        return new Point(xLast, yLast);
     }
 
     public boolean containsPoint(int x, int y) {
