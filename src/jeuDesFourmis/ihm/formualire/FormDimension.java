@@ -3,7 +3,9 @@ package jeuDesFourmis.ihm.formualire;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import jeuDesFourmis.ihm.frames.MainFrame;
@@ -29,11 +31,19 @@ public class FormDimension extends Formulaire {
 		this.hauteur = new JTextField("" + (this.getData().getHauteur() - 2));
 		this.largeur = new JTextField("" + (this.getData().getLargeur() - 2));
 		
+		Box bHauteur = Box.createHorizontalBox();
+		bHauteur.add(new JLabel("hauteur"));
+		bHauteur.add(this.hauteur);
+		
+		Box bLargeur = Box.createHorizontalBox();
+		bLargeur.add(new JLabel("largeur"));
+		bLargeur.add(this.largeur);
+		
 		this.valide = new JButton("valide les longueurs");
 		this.valide.addActionListener(this);
 		
-		this.add(this.hauteur);
-		this.add(this.largeur);
+		this.add(bHauteur);
+		this.add(bLargeur);
 		this.add(this.valide);
 	}
 	/**
@@ -43,10 +53,15 @@ public class FormDimension extends Formulaire {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(this.optionPanelConfirme("confimer les nouvelle dimension ?")) {
-			int valeurLargeur = Integer.parseInt(this.largeur.getText()) - 2;
-			int valeurHauteur = Integer.parseInt(this.hauteur.getText()) - 2;
-			this.getData().setDimensions(valeurLargeur, valeurHauteur);
-			this.getMain().getTerrain().refreshDimensions();
+			try {
+				int valeurLargeur = Integer.parseInt(this.largeur.getText());
+				int valeurHauteur = Integer.parseInt(this.hauteur.getText());
+				this.getData().setDimensions(valeurLargeur, valeurHauteur);
+				this.getMain().getTerrain().refreshDimensions();				
+			} catch (Exception e) {
+				this.optionPanelAlert("l'une des dimension n'est pas correcte");
+			}
+
 		}
 	}
 

@@ -22,7 +22,7 @@ public class FormVide extends Formulaire{
 		this.vide = new JButton("vide");
 		this.vide.addActionListener(this);
 		
-		this.add(this.vide);
+		this.add(this.vide);	
 	}
 	/**
 	 * permet au Jbutton de lancer le traitement.

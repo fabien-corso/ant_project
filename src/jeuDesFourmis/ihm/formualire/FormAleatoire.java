@@ -2,7 +2,9 @@ package jeuDesFourmis.ihm.formualire;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import jeuDesFourmis.ihm.frames.MainFrame;
@@ -29,12 +31,24 @@ public class FormAleatoire extends Formulaire {
 		this.murs = new JTextField("100");
 		this.grain = new JTextField("100");
 		
+		Box bFourmi = Box.createVerticalBox();
+		bFourmi.add(new JLabel("probabilité des fourmis"));
+		bFourmi.add(this.fourmi);
+		
+		Box bMurs = Box.createVerticalBox();
+		bMurs.add(new JLabel("probabilité des murs"));
+		bMurs.add(this.murs);
+		
+		Box bGrain = Box.createVerticalBox();
+		bGrain.add(new JLabel("probablitit des graines"));
+		bGrain.add(this.grain);
+		
 		this.aleatoire = new JButton("lancer l'aléatoire");
 		this.aleatoire.addActionListener(this);
 		
-		this.add(this.fourmi);
-		this.add(this.murs);
-		this.add(this.grain);
+		this.add(bFourmi);
+		this.add(bMurs);
+		this.add(bGrain);
 		this.add(this.aleatoire);
 	}
 
