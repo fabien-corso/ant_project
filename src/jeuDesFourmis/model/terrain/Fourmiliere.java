@@ -100,6 +100,9 @@ public class Fourmiliere {
 			  if(i < this.hauteur + 2  && j < this.largeur + 2) {
 				  newFourmis[i][j] = this.fourmis[i][j];
 				  newMurs[i][j] = this.murs[i][j];
+                  if ((i==0)||(i==hauteur+1)||(j==0)||(j==largeur+1)) {
+                      newMurs[i][j] = true;
+                  }
 				  newQteGraines[i][j] = this.qteGraines[i][j];
 			  }
 			  else {

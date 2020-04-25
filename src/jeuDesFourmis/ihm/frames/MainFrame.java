@@ -21,26 +21,31 @@ public class MainFrame extends AntSimulationFrame {
 	private PlayStop playStop;
 	
 	private boolean isPlayed;
+	private boolean loupeMode;
 	private List<AntSimulationFrame> allFrames;
 
 	public MainFrame() {
 		super("Ant simulation");
 		this.data = new Fourmiliere(100, 100);
 		this.allFrames = new ArrayList<>();
-		this.setTerrain(new Terrain(this.data));
+		this.loupeMode = false;
+		this.setTerrain(new Terrain(this, this.data));
+		Box westBox = Box.createVerticalBox();
 		this.formulaire = Box.createVerticalBox();
 		
 		this.isPlayed = false;
 		this.formulaire.add(new FormDimension(data, this));
 		this.formulaire.add(new FormVide(data, this));
 		this.formulaire.add(new FormAleatoire(data, this));
-		this.formulaire.add(new Loupe(this));
 		this.formulaire.add(Box.createVerticalGlue());
-		
+
+		westBox.add(this.formulaire);
+		westBox.add(new Loupe(this));
+		westBox.add(Box.createVerticalGlue());
 		this.playStop = new PlayStop(data, this);
 
 		this.add(this.getTerrain(), BorderLayout.CENTER);
-		this.add(this.formulaire, BorderLayout.WEST);
+		this.add(westBox, BorderLayout.WEST);
 		this.add(this.playStop, BorderLayout.SOUTH);
 
 		this.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
@@ -70,6 +75,14 @@ public class MainFrame extends AntSimulationFrame {
 	
 	public void setPlayed(boolean played) {
 		this.isPlayed = played;
+	}
+
+	public boolean isLoupeMode() {
+		return loupeMode;
+	}
+
+	public void setLoupeMode(boolean loupeMode) {
+		this.loupeMode = loupeMode;
 	}
 
 	@Override

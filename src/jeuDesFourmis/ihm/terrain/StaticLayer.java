@@ -2,19 +2,21 @@ package jeuDesFourmis.ihm.terrain;
 
 import jeuDesFourmis.model.terrain.Fourmiliere;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class StaticLayer extends Layer {
 
+    private boolean isGridDrawable;
+
     public StaticLayer(Fourmiliere data, int dimensionCase, Point cPoint, Dimension nbOfCases) {
         super(data, dimensionCase, cPoint, nbOfCases);
+        this.isGridDrawable = true;
     }
 
     public StaticLayer(Fourmiliere data, int dimensionCase) {
         super(data, dimensionCase);
+        this.isGridDrawable = true;
     }
 
     /**
@@ -25,22 +27,11 @@ public class StaticLayer extends Layer {
     @Override
     protected void makeDrawing(Graphics2D graphics) {
         graphics.setColor(Color.BLACK);
+        graphics.setStroke(new BasicStroke(1));
         this.drawWalls(graphics);
-        /*
-        Tracer la grille
-        int rows = this.getWidth()/this.DIMENSION_CASE;
-        int columns = this.getHeight()/this.DIMENSION_CASE;
-        System.out.println("Lignes: " + rows);
-        System.out.println("Colonnes: " + columns);
-        for (int i = 0; i < rows; i++) {
-            graphics.drawLine(0, i * this.DIMENSION_CASE,
-                                this.getWidth(), i * this.DIMENSION_CASE);
+        if (this.isGridDrawable) {
+            this.drawGrid(graphics);
         }
-
-        for (int i = 0; i < columns; i++) {
-            graphics.drawLine(i * this.DIMENSION_CASE, 0,
-                    i * this.DIMENSION_CASE, this.getHeight());
-        }*/
     }
 
     public void drawWalls(Graphics2D graphics) {
@@ -61,6 +52,21 @@ public class StaticLayer extends Layer {
         }
     }
 
+    public void drawGrid(Graphics2D graphics) {
+        int rows = this.getWidth()/this.DIMENSION_CASE;
+        int columns = this.getHeight()/this.DIMENSION_CASE;
+
+        for (int i = 0; i < rows; i++) {
+            graphics.drawLine(0, i * this.DIMENSION_CASE,
+                    this.getWidth(), i * this.DIMENSION_CASE);
+        }
+
+        for (int i = 0; i < columns; i++) {
+            graphics.drawLine(i * this.DIMENSION_CASE, 0,
+                    i * this.DIMENSION_CASE, this.getHeight());
+        }
+    }
+
     public void addWall(MouseEvent mouseEvent) {
         int startX = this.getArea().getFirstPoint().x;
         int startY = this.getArea().getFirstPoint().y;
@@ -72,4 +78,11 @@ public class StaticLayer extends Layer {
         this.repaint();
     }
 
+    public boolean isGridDrawable() {
+        return isGridDrawable;
+    }
+
+    public void setGridDrawable(boolean gridDrawable) {
+        isGridDrawable = gridDrawable;
+    }
 }

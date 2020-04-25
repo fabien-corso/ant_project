@@ -11,18 +11,23 @@ import java.awt.event.WindowListener;
 
 public class LoupeFrame extends AntSimulationFrame implements WindowListener {
 
+    public static Dimension DEFAULT_LOUPE_DIMENSION = new Dimension(11, 11);
     private MainFrame mainFrame;
     private Fourmiliere data;
 
-    public LoupeFrame(MainFrame mf) {
+    public LoupeFrame(MainFrame mf, Point centralP, Dimension d) {
+        super("Loupe - cellule centrale: x=" + centralP.x + ", y=" + centralP.y);
         this.mainFrame = mf;
         this.data = mf.getData();
-        this.setTerrain(new ZoomedTerrain(this.data, new Point(25,25), new Dimension(11,11)));
+        this.setTerrain(new ZoomedTerrain(this.mainFrame, this.data, centralP, d));
         this.add(this.getTerrain(), BorderLayout.CENTER);
         this.addWindowListener(this);
         this.pack();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
 
+    public LoupeFrame(MainFrame mainFrame, Point centralP) {
+        this(mainFrame, centralP, LoupeFrame.DEFAULT_LOUPE_DIMENSION);
     }
 
     @Override

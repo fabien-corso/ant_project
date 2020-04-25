@@ -39,7 +39,8 @@ public class PlayStop extends JButton implements ActionListener {
 			this.frame.setVisibilityFormulaire(true);
 			this.antSimulationThread.stopSimulation();
 		}
-		this.frame.setPlayed(this.frame.getPlayed());
+		this.frame.setPlayed(!this.frame.getPlayed());
+		this.frame.getTerrain().refreshAll();
 	}
 	
 }

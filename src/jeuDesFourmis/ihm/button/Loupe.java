@@ -4,6 +4,7 @@ import jeuDesFourmis.ihm.frames.MainFrame;
 import jeuDesFourmis.ihm.frames.LoupeFrame;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,8 +19,7 @@ public class Loupe extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        LoupeFrame lpFrame = new LoupeFrame(this.mainFrame);
-        this.mainFrame.addFrame(lpFrame);
-        lpFrame.setVisible(true);
+        this.mainFrame.setLoupeMode(true);
+        this.mainFrame.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
     }
 }
